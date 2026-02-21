@@ -1,4 +1,5 @@
 /**
+ * Based on https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
@@ -10,9 +11,14 @@
 	"observability": {
 		"enabled": true
 	},
-	"compatibility_flags": [
-		"nodejs_compat"
-	]
+	"compatibility_flags": ["nodejs_compat"],
+	"d1_databases": [
+		{
+			"binding": "db",
+			"database_name": "cheigns-db",
+			"database_id": "1c74585d-e7dc-4474-a203-da69d492418c",
+		},
+	],
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
