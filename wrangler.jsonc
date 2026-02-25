@@ -1,5 +1,6 @@
 /**
  * Based on https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/
+ * and https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
@@ -9,7 +10,7 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2025-09-27",
 	"observability": {
-		"enabled": true
+		"enabled": true,
 	},
 	"compatibility_flags": ["nodejs_compat"],
 	"d1_databases": [
@@ -17,6 +18,7 @@
 			"binding": "db",
 			"database_name": "cheigns-db",
 			"database_id": "1c74585d-e7dc-4474-a203-da69d492418c",
+			"migrations_dir": "drizzle",
 		},
 	],
 	/**
