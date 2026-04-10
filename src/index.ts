@@ -11,7 +11,12 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 import { httpServerHandler } from 'cloudflare:node';
-import express from 'express';
+import express, { Request, Response, Router } from 'express';
+import chainsRouter from './modules/chains/chains.routes';
+import usersRouter from './modules/users/users.routes';
+import linksRouter from './modules/links/links.routes';
+import errorMiddleware from './middlewares/error.middleware';
+import { authMiddleware } from './middlewares/auth.middleware';
 
 const app = express();
 
@@ -22,6 +27,13 @@ app.use(express.json());
 app.get('/', (req, res) => {
 	res.json({ message: 'Express.js running on Cloudflare Workers' });
 });
+
+// routes
+app.use('/chains', chainsRouter);
+app.use('/chains/:chainHash/links', linksRouter);
+
+// global error handling
+app.use(errorMiddleware);
 
 app.listen(3000);
 
