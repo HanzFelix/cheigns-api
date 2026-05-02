@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // routes
+app.use('/auth', usersRouter);
 app.use('/chains', chainsRouter);
 app.use('/chains/:chainHash/links', linksRouter);
 
